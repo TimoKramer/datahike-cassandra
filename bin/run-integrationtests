@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+trap teardown EXIT
+
+function setup() {
+    if [ -z ${CIRCLECI} ]; then
+        echo $(docker run --detach --publish 8000:8000 circleci/dynamodb:latest)
+    fi
+}
+
+function teardown() {
+    if [ -z ${CIRCLECI} ]; then
+        docker rm -f ${CONTAINER_ID}
+    fi
+}
+
+CONTAINER_ID=$(setup)
+
+TIMBRE_LEVEL=':fatal' bin/kaocha --focus :integration
