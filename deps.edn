@@ -1,6 +1,7 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.3"}
         environ/environ {:mvn/version "1.2.0"}
-        io.replikativ/datahike {:mvn/version "0.3.5"}}
+        io.replikativ/datahike {:local/root "../datahike"}
+        timokramer/konserve-cassandra {:local/root "../konserve-cassandra"}}
  :aliases {:test {:extra-paths ["test"]
                   :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.829"}
                                metosin/malli {:mvn/version "0.4.0"}}}

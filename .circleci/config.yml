@@ -12,19 +12,17 @@ workflows:
           context: dockerhub-deploy
           requires:
             - tools/setup
-      - tools/unittest:
-          context: dockerhub-deploy
-          requires:
-            - tools/setup
       - tools/integrationtest:
           context: dockerhub-deploy
           requires:
             - tools/setup
       - tools/build:
+          jarname: "datahike-cassandra"
           context: dockerhub-deploy
           requires:
             - tools/setup
       - tools/deploy-snapshot:
+          jarname: "datahike-cassandra"
           context:
             - clojars-deploy
             - dockerhub-deploy
@@ -34,10 +32,10 @@ workflows:
           requires:
             - tools/setup
             - tools/format
-            - tools/unittest
             - tools/integrationtest
             - tools/build
       - tools/deploy-release:
+          jarname: "datahike-cassandra"
           context:
             - clojars-deploy
             - dockerhub-deploy
@@ -47,6 +45,5 @@ workflows:
           requires:
             - tools/setup
             - tools/format
-            - tools/unittest
             - tools/integrationtest
             - tools/build
