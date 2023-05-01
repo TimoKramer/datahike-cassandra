@@ -6,7 +6,7 @@
 
 (defmethod store-identity :cassandra [store-config]
   (let [{:keys [session-keyspace contact-points]} store-config]
-      [:cassandra session-keyspace contact-points]))
+    [:cassandra session-keyspace contact-points]))
 
 (defmethod empty-store :cassandra [store-config]
   (k/connect-store (dissoc store-config :backend)))
