@@ -2,9 +2,7 @@
   (:require [datahike.store :refer [empty-store delete-store connect-store default-config config-spec release-store store-identity]]
             [datahike.config :refer [map-from-env]]
             [konserve-cassandra.core :as k]
-            [clojure.spec.alpha :as s]
-            [taoensso.timbre :as log])
-  (:import [com.datastax.oss.driver.api.core.servererrors InvalidQueryException]))
+            [clojure.spec.alpha :as s]))
 
 (defmethod store-identity :cassandra [store-config]
   (let [{:keys [session-keyspace contact-points]} store-config]

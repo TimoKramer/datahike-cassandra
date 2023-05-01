@@ -4,7 +4,7 @@
            [datahike-cassandra.core]))
 
 (def config {:store {:backend :cassandra
-                     :session-keyspace "konserve_test"}
+                     :session-keyspace "datahike_cassandra_integration_test"}
              :schema-flexibility :write
              :keep-history? true})
 
